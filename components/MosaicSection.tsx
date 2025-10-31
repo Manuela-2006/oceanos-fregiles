@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 export default function MosaicSection() {
   const [isDark, setIsDark] = useState(false);
 
-  // 🌙 Detectar dark mode
+  // 🌙 Detectar dark mode dinámicamente
   useEffect(() => {
     const checkDarkMode = () => {
       setIsDark(document.documentElement.classList.contains("dark"));
     };
 
-    checkDarkMode();
+    checkDarkMode(); // Verifica el modo actual al cargar
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -32,14 +32,25 @@ export default function MosaicSection() {
         {/* 🖼️ Imagen sin marco ni sombra */}
         <div className="w-full flex justify-center lg:justify-start">
           <div className="w-full">
-            <Image
-              src={isDark ? "/rombos-dark.jpg" : "/rombos.jpg"}
-              alt="Mosaico de rombos del océano"
-              width={1600}
-              height={1200}
-              className="w-full h-auto object-contain max-h-[420px] sm:max-h-[480px] lg:max-h-[520px] transition-opacity duration-300"
-              priority
-            />
+            {isDark ? (
+              <Image
+                src="/rombos-dark.jpg"
+                alt="Mosaico de rombos del océano - modo oscuro"
+                width={1600}
+                height={1200}
+                className="w-full h-auto object-contain max-h-[420px] sm:max-h-[480px] lg:max-h-[520px] transition-opacity duration-300 opacity-100"
+                priority
+              />
+            ) : (
+              <Image
+                src="/rombos.jpg"
+                alt="Mosaico de rombos del océano - modo claro"
+                width={1600}
+                height={1200}
+                className="w-full h-auto object-contain max-h-[420px] sm:max-h-[480px] lg:max-h-[520px] transition-opacity duration-300 opacity-100"
+                priority
+              />
+            )}
           </div>
         </div>
 
@@ -73,7 +84,10 @@ export default function MosaicSection() {
               color: isDark ? "#B0BEC5" : "#374151",
             }}
           >
-            Cada vez más personas, comunidades y proyectos se unen para cambiar la historia de los océanos. Este movimiento global demuestra que la conciencia puede convertirse en acción y que un futuro limpio comienza con quienes creen en él.
+            Cada vez más personas, comunidades y proyectos se unen para cambiar
+            la historia de los océanos. Este movimiento global demuestra que la
+            conciencia puede convertirse en acción y que un futuro limpio
+            comienza con quienes creen en él.
           </p>
         </div>
       </div>
