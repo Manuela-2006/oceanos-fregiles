@@ -184,7 +184,7 @@ export default function ProblemSection() {
         <div className="relative mt-12 lg:mt-0">
           <div className="rounded-3xl overflow-hidden shadow-2xl">
             <img
-              src="/problemSection.jpg"
+              src="/ProblemSection.jpg"
               alt="Contaminación plástica en el océano"
               className="w-full h-64 sm:h-80 md:h-[450px] lg:h-[550px] object-cover transition-opacity duration-300"
               style={{ opacity: isDark ? 0.9 : 1 }}
