@@ -30,11 +30,15 @@ export default function ProblemSection() {
     return () => observer.disconnect()
   }, [])
 
-  // Contadores animados
+  // Contadores animados (corregido el tipo)
   useEffect(() => {
     if (!isVisible) return
 
-    const animateCount = (target: number, setter: any, speed: number) => {
+    const animateCount = (
+      target: number,
+      setter: React.Dispatch<React.SetStateAction<number>>,
+      speed: number
+    ) => {
       let current = 0
       const interval = setInterval(() => {
         if (current < target) {
@@ -119,7 +123,7 @@ export default function ProblemSection() {
                 className="absolute top-1/2 -translate-y-1/2 font-semibold text-sm ml-3"
                 style={{
                   left: "90%",
-                  color: isDark ? "#FFFFFF" : "#374151", // ✅ Porcentaje en blanco en modo dark
+                  color: isDark ? "#FFFFFF" : "#374151",
                 }}
               >
                 {count1}%
@@ -143,7 +147,7 @@ export default function ProblemSection() {
                 className="absolute top-1/2 -translate-y-1/2 font-semibold text-sm ml-3"
                 style={{
                   left: "54%",
-                  color: isDark ? "#FFFFFF" : "#374151", // ✅ Porcentaje en blanco en modo dark
+                  color: isDark ? "#FFFFFF" : "#374151",
                 }}
               >
                 {count2}%
@@ -167,7 +171,7 @@ export default function ProblemSection() {
                 className="absolute top-1/2 -translate-y-1/2 font-semibold text-sm ml-3"
                 style={{
                   left: "82%",
-                  color: isDark ? "#FFFFFF" : "#374151", // ✅ Porcentaje en blanco en modo dark
+                  color: isDark ? "#FFFFFF" : "#374151",
                 }}
               >
                 {count3}%
